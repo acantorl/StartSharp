@@ -45,7 +45,7 @@ public class LogInUserStepDefinitions {
 
         theActorInTheSpotlight().should(
                 seeThat("El mensaje visible en el Dashboard",
-                        ValidarLogin.elMensajeDeDashboard(), equalTo("Tablero"))
+                        ValidarLogin.elMensajeDeDashboard(), equalTo(expectedMessage))
         );
 
 
