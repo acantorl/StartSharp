@@ -1,34 +1,22 @@
-# Azure Pipelines - CI para StartSharp Automation (Gradle + Serenity BDD)
+# Gradle
+# Build your Java project and run tests with Gradle using a Gradle wrapper script.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
 trigger:
-  - main
+- main
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
-  # 1. Ejecución de pruebas y compilación con Gradle
-  - task: Gradle@3
-    displayName: 'Ejecutar Pruebas Automatizadas con Gradle'
-    inputs:
-      gradleWrapperFile: 'gradlew'
-      # clean: Limpia construcciones previas.
-      # test: Corre las pruebas de JUnit 5.
-      # aggregate: Comando nativo de Serenity para compilar el reporte index.html
-      tasks: 'clean test aggregate'
-      options: '-Xmx3072m -XX:MaxMetaspaceSize=512m'
-      publishJUnitResults: true
-      testResultsFiles: '**/TEST-*.xml'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.21' # Configura JDK 21 para soportar la arquitectura moderna
-      jdkArchitectureOption: 'x64'
-
-  # 2. Publicar el reporte interactivo HTML de Serenity en Azure DevOps
-  - task: PublishPipelineArtifact@1
-    displayName: 'Publicar Reporte HTML de Serenity'
-    inputs:
-      # Ruta estándar donde el plugin de Serenity para Gradle guarda el reporte final
-      targetPath: 'build/site/serenity'
-      artifact: 'SerenityReport'
-      publishLocation: 'pipeline'
-    # 'always()' asegura que el reporte se suba incluso si alguna prueba falla (así puedes ver la evidencia)
-    condition: always()
+- task: Gradle@3
+  inputs:
+    gradleWrapperFile: 'gradlew'  # Path to your Gradle wrapper
+    tasks: 'build'  # Replace with the tasks you want to run
+    options: '-Xmx3072m'
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'  # Updated pattern for test result files
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'  # Replace with your JDK version
+    jdkArchitectureOption: 'x64'
