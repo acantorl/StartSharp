@@ -4,19 +4,21 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- main
+  - main
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Gradle@3
-  inputs:
-    gradleWrapperFile: 'gradlew'  # Path to your Gradle wrapper
-    tasks: 'build'  # Replace with the tasks you want to run
-    options: '-Xmx3072m'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'  # Updated pattern for test result files
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.11'  # Replace with your JDK version
-    jdkArchitectureOption: 'x64'
+  - task: Gradle@3
+    inputs:
+      gradleWrapperFile: 'gradlew'  # Path to your Gradle wrapper
+      tasks: 'clean test'           # CAMBIO: Usamos 'clean test' para que corra tus pruebas en lugar de compilar todo el artefacto
+      options: ''                   # CAMBIO: Dejar vacío aquí para evitar el error de "Unknown command-line option '-X'"
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'  # Updated pattern for test result files
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.11'  # Replace with your JDK version
+      jdkArchitectureOption: 'x64'
+    env:
+      GRADLE_OPTS: '-Xmx3072m -XX:MaxMetaspaceSize=512m' # AQUÍ se inyecta la memoria de forma segura para la JVM

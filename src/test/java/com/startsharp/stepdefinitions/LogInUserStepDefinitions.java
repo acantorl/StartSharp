@@ -10,6 +10,7 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
@@ -39,7 +40,8 @@ public class LogInUserStepDefinitions {
     @Then("he should see a message related to {string}")
     public void heShouldSeeAMessageRelatedTo(String expectedMessage) {
         theActorInTheSpotlight().attemptsTo(
-                WaitUntil.the(MyAccountPageUI.DASHBOARD_MESSAGE, isVisible())
+                //WaitUntil.the(MyAccountPageUI.DASHBOARD_MESSAGE, isVisible())
+                WaitUntil.the(MyAccountPageUI.DASHBOARD_MESSAGE, WebElementStateMatchers.containsText(expectedMessage))
                         .forNoMoreThan(15).seconds()
         );
 
