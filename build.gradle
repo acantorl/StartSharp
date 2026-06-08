@@ -13,6 +13,7 @@ repositories {
 def serenityVersion = '4.1.20'
 
 dependencies {
+
     implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
     implementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
     implementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
@@ -25,6 +26,28 @@ dependencies {
 
     implementation 'org.slf4j:slf4j-simple:2.0.12'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+
+
+
+
+    testImplementation 'org.junit.platform:junit-platform-suite'
+
+
+    // BOM de JUnit 5 para alinear versiones
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+
+    // Motores de ejecución de JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // LAS LIBRERÍAS QUE TE FALTAN PARA LAS SUITES Y CUCUMBER (Quitan el rojo):
+    testImplementation 'org.junit.platform:junit-platform-suite'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.15.0'
+
+
+
+
 }
 
 tasks.withType(JavaCompile) {
