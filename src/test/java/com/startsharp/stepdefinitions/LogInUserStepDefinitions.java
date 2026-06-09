@@ -1,8 +1,8 @@
 package com.startsharp.stepdefinitions;
 
-import com.startsharp.questions.ValidarLogin;
-import com.startsharp.tasks.LogInUser;
-import com.startsharp.userinterfaces.MyAccountPageUI;
+import com.startsharp2.questions.ValidarLogin;
+import com.startsharp2.tasks.LogInUser;
+import com.startsharp2.userinterfaces.MyAccountPageUI;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,7 +15,6 @@ import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 import static org.hamcrest.Matchers.equalTo;
 
 public class LogInUserStepDefinitions {

@@ -10,9 +10,10 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 
 @Suite
 @IncludeEngines("cucumber")
-@SelectClasspathResource("features")
+@SelectClasspathResource("features/login_user.feature")
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.startsharp.stepdefinitions")
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, io.cucumber.core.plugin.SerenityReporter2")
+// SE CORRIGE AQUÍ: Se quita el '2' del final de SerenityReporter
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, io.cucumber.core.plugin.SerenityReporter")
 public class LogInUserRunner {
     // Esta clase permanece vacía
 }

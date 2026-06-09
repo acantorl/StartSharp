@@ -5,5 +5,8 @@ Feature: Logout
     When he logs with credentials "<user>" and "<password>"
     And he logs out
     Then he should see a header message logo related to "<expected_message>"
+    Examples:
+      | user  | password | expected_message            |
+      | admin | serenity | Iniciar sesión en su cuenta |
 
 

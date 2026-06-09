@@ -3,8 +3,8 @@ plugins {
     id 'net.serenity-bdd.serenity-gradle-plugin' version '4.1.3'
 }
 
-group 'com.startsharp'
-version '1.0-SNAPSHOT'
+group = 'com.startsharp'
+version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -55,23 +55,18 @@ tasks.withType(JavaCompile) {
 }
 
 test {
-    useJUnitPlatform {
-        includeEngines 'junit-jupiter', 'junit-vintage'
-    }
-
+    useJUnitPlatform()
 
     systemProperty "file.encoding", "UTF-8"
     systemProperty "webdriver.driver", "chrome"
     systemProperty "webdriver.autodownload", "true"
 
-    //systemProperty "chrome.switches", "--headless=new;--no-sandbox;--disable-dev-shm-usage;--window-size=1920,1080;--remote-allow-origins=*;--ignore-certificate-errors"
-
     systemProperties System.getProperties()
 
     testLogging {
         showStandardStreams = true
-        events "passed", "skipped", "failed"
-        exceptionFormat "full"
+        events = ["passed", "skipped", "failed"] // El formato moderno prefiere usar corchetes y '='
+        exceptionFormat = "full" // <-- Corregido con '='
     }
 }
 
