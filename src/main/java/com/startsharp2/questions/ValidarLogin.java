@@ -7,7 +7,9 @@ import net.serenitybdd.screenplay.questions.Text;
 
 public class ValidarLogin implements Question<String> {
 
-public static ValidarLogin elMensajeDeDashboard() { return new ValidarLogin(); }
+    public static ValidarLogin elMensajeDeDashboard() {
+        return new ValidarLogin();
+    }
 
 
     @Override

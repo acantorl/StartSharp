@@ -1,11 +1,9 @@
 package com.startsharp.stepdefinitions;
 
 
-import com.startsharp2.questions.ValidarLogin;
 import com.startsharp2.questions.ValidarLogout;
 import com.startsharp2.tasks.LogOutUser;
 import com.startsharp2.userinterfaces.HomePageUI;
-import com.startsharp2.userinterfaces.MyAccountPageUI;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;

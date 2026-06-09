@@ -17,7 +17,7 @@ public class LogInUser implements Task {
     private final String usuario;
     private final String password;
 
-    public LogInUser(String usuario, String password){
+    public LogInUser(String usuario, String password) {
         this.usuario = usuario;
         this.password = password;
     }
@@ -37,12 +37,6 @@ public class LogInUser implements Task {
                 Enter.theValue(password).into(HomePageUI.USER_PASSWORD_INPUT),
                 Click.on(HomePageUI.LOGIN_BUTTON)
         );
-
-
-
-
-
-
 
 
     }

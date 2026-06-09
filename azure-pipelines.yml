@@ -12,13 +12,13 @@ pool:
 steps:
   - task: Gradle@3
     inputs:
-      gradleWrapperFile: 'gradlew'  # Path to your Gradle wrapper
-      tasks: 'clean test'           # CAMBIO: Usamos 'clean test' para que corra tus pruebas en lugar de compilar todo el artefacto
-      options: ''                   # CAMBIO: Dejar vacío aquí para evitar el error de "Unknown command-line option '-X'"
+      gradleWrapperFile: 'gradlew'
+      tasks: 'clean test'
+      options: ''
       publishJUnitResults: true
-      testResultsFiles: '**/TEST-*.xml'  # Updated pattern for test result files
+      testResultsFiles: '**/TEST-*.xml'
       javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.11'  # Replace with your JDK version
+      jdkVersionOption: '1.11'
       jdkArchitectureOption: 'x64'
     env:
-      GRADLE_OPTS: '-Xmx3072m -XX:MaxMetaspaceSize=512m' # AQUÍ se inyecta la memoria de forma segura para la JVM
+      GRADLE_OPTS: '-Xmx3072m -XX:MaxMetaspaceSize=512m'
