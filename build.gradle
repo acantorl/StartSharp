@@ -78,4 +78,3 @@ test {
 serenity {
     reports = ["html"]
 }
-
