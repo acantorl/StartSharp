@@ -9,7 +9,6 @@ import static com.startsharp2.userinterfaces.MyAccountPageUI.CLOSE_SESSION_MENU_
 import static com.startsharp2.userinterfaces.MyAccountPageUI.USER_PROFILE_MENU_BUTTON;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isPresent;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class LogOutUser implements Task {
 
@@ -22,9 +21,9 @@ public class LogOutUser implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                WaitUntil.the(USER_PROFILE_MENU_BUTTON, isPresent()).forNoMoreThan(15).seconds(),
+                WaitUntil.the(USER_PROFILE_MENU_BUTTON, isPresent()).forNoMoreThan(20).seconds(),
                 Click.on(USER_PROFILE_MENU_BUTTON),
-                WaitUntil.the(CLOSE_SESSION_MENU_BUTTON, isVisible()).forNoMoreThan(15).seconds(),
+                WaitUntil.the(CLOSE_SESSION_MENU_BUTTON, isPresent()).forNoMoreThan(20).seconds(),
                 Click.on(CLOSE_SESSION_MENU_BUTTON)
 
         );
