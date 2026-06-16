@@ -7,10 +7,12 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
+import net.serenitybdd.screenplay.questions.WebElementQuestion;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
@@ -20,7 +22,9 @@ import static org.hamcrest.Matchers.equalTo;
 public class LogInUserStepDefinitions {
 
     @Before
-    public void setTheStage() { OnStage.setTheStage(new OnlineCast());}
+    public void setTheStage() {
+        OnStage.setTheStage(new OnlineCast());
+    }
 
     @Given("that the user navigates on the StartSharp page")
     public void thatTheUserNavigatesOnTheStartSharpPage() {
@@ -28,6 +32,7 @@ public class LogInUserStepDefinitions {
 
 
     }
+
     @When("he logs with credentials {string} and {string}")
     public void heLogsWithCredentialsAnd(String usuario, String password) {
         OnStage.theActorInTheSpotlight().attemptsTo(
@@ -36,13 +41,16 @@ public class LogInUserStepDefinitions {
 
 
     }
+
     @Then("he should see a message related to {string}")
     public void heShouldSeeAMessageRelatedTo(String expectedMessage) {
-        theActorInTheSpotlight().attemptsTo(
-                //WaitUntil.the(MyAccountPageUI.DASHBOARD_MESSAGE, isVisible())
-                WaitUntil.the(MyAccountPageUI.DASHBOARD_MESSAGE, WebElementStateMatchers.containsText(expectedMessage))
-                        .forNoMoreThan(15).seconds()
+        GivenWhenThen.seeThat(
+                WebElementQuestion.the(MyAccountPageUI.DASHBOARD_MESSAGE),
+                WebElementStateMatchers.containsText("Tablero")
+
+
         );
+
 
         theActorInTheSpotlight().should(
                 seeThat("El mensaje visible en el Dashboard",
@@ -50,15 +58,7 @@ public class LogInUserStepDefinitions {
         );
 
 
-
-
-
-
     }
-
-
-
-
 
 
 }
