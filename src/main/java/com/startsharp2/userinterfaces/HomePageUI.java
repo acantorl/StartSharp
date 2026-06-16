@@ -16,12 +16,8 @@ public class HomePageUI {
             .located(By.id("LoginPanel0_LoginButton"));
 
 
-    //public static final Target LBL_LOGIN_TITLE = Target.the("título del formulario de login")
-    //.locatedBy("//h5[contains(text(), 'Iniciar sesión en su cuenta')]");
-
-
-    public static final Target LBL_LOGIN_TITLE = Target.the("título del formulario de login")
-            .located(By.xpath("//h5[contains(., 'Iniciar sesión en su cuenta')]"));
+    public static final Target TXT_USER = Target.the("campo de texto del usuario")
+            .locatedBy("input[name='Username']");
 
 
 }
