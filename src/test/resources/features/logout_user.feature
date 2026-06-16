@@ -4,9 +4,8 @@ Feature: Logout
     Given that the user navigates on the StartSharp page
     When he logs with credentials "<user>" and "<password>"
     And he logs out
-    Then he should see a header message logo related to "<expected_message>"
+    Then he should be redirected to the login page
+
     Examples:
-      | user  | password | expected_message            |
-      | admin | serenity | Iniciar sesión en su cuenta |
-
-
+      | user  | password |
+      | admin | serenity |

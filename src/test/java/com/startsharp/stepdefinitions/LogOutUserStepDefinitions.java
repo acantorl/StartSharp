@@ -22,10 +22,10 @@ public class LogOutUserStepDefinitions {
         );
     }
 
-    @Then("he should see a header message logo related to {string}")
-    public void he_should_see_a_header_message_logo_related_to(String expectedMessage) {
+    @Then("he should be redirected to the login page")
+    public void he_should_be_redirected_to_the_login_page() {
 
-        // 1. Espera anti-asincronía basada en el cambio de URL (Esto es lo que nos dio el verde)
+        // 1. Espera anti-asincronía basada en el cambio de URL
         theActorInTheSpotlight().attemptsTo(
                 Wait.until(
                         theActor -> TheWebPage.currentUrl().answeredBy(theActor),
@@ -35,7 +35,7 @@ public class LogOutUserStepDefinitions {
 
         // 2. Aserción formal usando tu Question limpia de Screenplay
         theActorInTheSpotlight().should(
-                seeThat("El usuario se encuentra en el formulario de Login",
+                seeThat("El usuario se encuentra en la pantalla de Login",
                         LogInForm.esVisible(),
                         is(true))
         );
