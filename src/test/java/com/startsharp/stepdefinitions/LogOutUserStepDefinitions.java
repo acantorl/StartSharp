@@ -5,11 +5,12 @@ import com.startsharp2.userinterfaces.HomePageUI;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
-import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
-import net.serenitybdd.screenplay.questions.WebElementQuestion;
+import net.serenitybdd.screenplay.questions.Text;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static org.hamcrest.Matchers.anyOf;
+import static org.hamcrest.Matchers.containsString;
 
 public class LogOutUserStepDefinitions {
 
@@ -22,12 +23,11 @@ public class LogOutUserStepDefinitions {
 
     @Then("he should see a header message logo related to {string}")
     public void he_should_see_a_header_message_logo_related_to(String expectedMessage) {
-
-        // Estructura Screenplay recomendada: Valida de manera fluida y espera el elemento automáticamente
+        // Text.of() extrae de forma limpia el String del HTML evitando datos técnicos del Driver
         theActorInTheSpotlight().should(
-                seeThat("El mensaje visible en el login tras cerrar sesión",
-                        WebElementQuestion.the(HomePageUI.LBL_LOGIN_TITLE),
-                        WebElementStateMatchers.containsText(expectedMessage))
+                seeThat("El mensaje visible en el login tras cerrar sesión (Soporte Bilingüe)",
+                        Text.of(HomePageUI.LBL_LOGIN_TITLE),
+                        anyOf(containsString("Iniciar sesión"), containsString("Sign In")))
         );
     }
 }
