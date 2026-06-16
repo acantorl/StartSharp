@@ -1,4 +1,4 @@
-package com.startsharp2.userinterfaces;
+package com.startsharp.userinterfaces;
 
 import net.serenitybdd.screenplay.targets.Target;
 import org.openqa.selenium.By;

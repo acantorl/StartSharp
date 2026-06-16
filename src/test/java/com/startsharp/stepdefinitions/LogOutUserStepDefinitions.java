@@ -1,6 +1,7 @@
 package com.startsharp.stepdefinitions;
 
-import com.startsharp2.tasks.LogOutUser;
+import com.startsharp.tasks.LogOutUser;
+import com.startsharp.questions.LogInForm; // Tu Question inmune
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
@@ -10,6 +11,7 @@ import org.hamcrest.Matchers;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static org.hamcrest.Matchers.is;
 
 public class LogOutUserStepDefinitions {
 
@@ -23,7 +25,7 @@ public class LogOutUserStepDefinitions {
     @Then("he should see a header message logo related to {string}")
     public void he_should_see_a_header_message_logo_related_to(String expectedMessage) {
 
-        // 1. DALE TIEMPO A LA REDIRECCIÓN: Esperamos hasta 15 segundos a que la URL cambie al Login
+        // 1. Espera anti-asincronía basada en el cambio de URL (Esto es lo que nos dio el verde)
         theActorInTheSpotlight().attemptsTo(
                 Wait.until(
                         theActor -> TheWebPage.currentUrl().answeredBy(theActor),
@@ -31,11 +33,11 @@ public class LogOutUserStepDefinitions {
                 ).forNoMoreThan(15).seconds()
         );
 
-        // 2. ASERCIÓN INMUNE: Validamos que la URL actual contenga la ruta de autenticación externa
+        // 2. Aserción formal usando tu Question limpia de Screenplay
         theActorInTheSpotlight().should(
-                seeThat("La URL actual corresponde a la pantalla de Login",
-                        TheWebPage.currentUrl(),
-                        Matchers.containsString("/Account/Login"))
+                seeThat("El usuario se encuentra en el formulario de Login",
+                        LogInForm.esVisible(),
+                        is(true))
         );
     }
 }

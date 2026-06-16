@@ -1,6 +1,6 @@
-package com.startsharp2.tasks;
+package com.startsharp.tasks;
 
-import com.startsharp2.userinterfaces.HomePageUI;
+import com.startsharp.userinterfaces.HomePageUI;
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;

@@ -1,7 +1,7 @@
 package com.startsharp.stepdefinitions;
 
-import com.startsharp2.tasks.LogInUser;
-import com.startsharp2.userinterfaces.MyAccountPageUI;
+import com.startsharp.tasks.LogInUser;
+import com.startsharp.userinterfaces.MyAccountPageUI;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

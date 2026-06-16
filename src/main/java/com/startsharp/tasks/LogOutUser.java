@@ -1,12 +1,12 @@
-package com.startsharp2.tasks;
+package com.startsharp.tasks;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
-import static com.startsharp2.userinterfaces.MyAccountPageUI.CLOSE_SESSION_MENU_BUTTON;
-import static com.startsharp2.userinterfaces.MyAccountPageUI.USER_PROFILE_MENU_BUTTON;
+import static com.startsharp.userinterfaces.MyAccountPageUI.CLOSE_SESSION_MENU_BUTTON;
+import static com.startsharp.userinterfaces.MyAccountPageUI.USER_PROFILE_MENU_BUTTON;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isPresent;
 
