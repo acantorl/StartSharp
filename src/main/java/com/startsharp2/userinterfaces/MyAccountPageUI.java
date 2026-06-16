@@ -4,8 +4,13 @@ import net.serenitybdd.screenplay.targets.Target;
 
 public class MyAccountPageUI {
 
+    //public static final Target DASHBOARD_MESSAGE = Target.the("mensaje de tablero")
+    //.locatedBy("//h1[text()='Tablero']");
+
+
     public static final Target DASHBOARD_MESSAGE = Target.the("mensaje de tablero")
-            .locatedBy("//h1[text()='Tablero']");
+            .locatedBy(".content-header h1");
+
 
     public static final Target USER_PROFILE_MENU_BUTTON = Target.the("Botón de perfil de usuario")
             .locatedBy(".s-user-profile-link");
