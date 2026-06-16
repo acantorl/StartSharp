@@ -18,7 +18,7 @@ steps:
       publishJUnitResults: true
       testResultsFiles: '**/TEST-*.xml'
       javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.11'
+      jdkVersionOption: '1.21'
       jdkArchitectureOption: 'x64'
     env:
       GRADLE_OPTS: '-Xmx3072m -XX:MaxMetaspaceSize=512m'
